@@ -1,0 +1,33 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Web:      www.OpenFOAM.com
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    This postprocessing tool is used to find the max z height of an input field
+    with input file singleCellCrystalSize in the simulation folder.
+
+\*---------------------------------------------------------------------------*/
+
+type            singleCellCrystalSize;
+libs            ("libsingleCellCrystalSize.so");
+
+// it is necessary to specify the field used for finding the peak
+// here otherwise postProcess tool wont read them
+fields
+(
+    alpha.solid1
+);
+
+phaseCrit   1e-10;
+
+// volume integration box is set by two points
+minPoint         (   1    0     -0.5 );
+maxPoint         (  37   33      1.0 );
+
+// sort range for single cell crystal size
+sizeRange        (0 50e-9 100e-9 150e-9 200e-9 250e-9 300e-9 350e-9 400e-9 450e-9);
+
+// ************************************************************************* //

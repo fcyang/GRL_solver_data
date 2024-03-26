@@ -1,0 +1,7 @@
+threePhaseMixture/immiscibleIncompressibleThreePhaseMixture/immiscibleIncompressibleThreePhaseMixture.C
+threePhaseMixture/incompressibleThreePhaseMixture/incompressibleThreePhaseMixture.C
+threePhaseMixture/threePhaseInterfaceProperties/threePhaseInterfaceProperties.C
+phaseChangeReaction/surfaceDensity/surfaceDensity.C
+mpFoam.C
+
+EXE = $(FOAM_USER_APPBIN)/mpFoam

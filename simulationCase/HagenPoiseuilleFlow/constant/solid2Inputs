@@ -1,0 +1,68 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      solid2Inputs;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//- Phase name
+phaseName           solid2;
+
+//- Solid phase molar mass ()
+Mv                  200.0;
+
+//- Constant for saturation index
+pKsp                10.0;
+
+//- Volume/mole
+Vmol                50e-4;
+
+//- Kinetic reaction constant for precipitation
+surfaceReaction     false;
+precOrDiss			dissolution;
+reacModel           linear;
+K                   1.0e-4;
+
+//- Activation concentration for precipitation
+Csat                2.0;
+
+//- Initial concentration of bulk solution
+Cinit               0.0;
+
+//- Ion diffusion coefficient
+diffInLiquid        1.4e-9;
+
+//- Parameters to constrain diffusive surface thickness
+alphaSolidMin       0.1;
+gradientLimit       1e20;
+
+//- Penalty constant for solid phase in fluid flow
+Cu                  0.0;
+
+//- Options for different solver functions
+//- Surface area density model option
+areaDensityModel    exponent;
+areaDensityFactor   0.0;
+areaDensityExp      1.0;
+
+//- Options for nucleation
+nucleation          false;
+//- Nucleation parameters
+nucleationModel     wall;
+nucleationVof       0.0;
+lnA                 18.2;
+B                   5.333;
+gamma               32.9e-3;
+
+// debug enable/disable
+debug               false;
+
+// ************************************************************************* //

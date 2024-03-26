@@ -1,0 +1,30 @@
+// -*- C -*-
+
+functions
+{
+	solidVolume
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    writeTime;
+        writeFields     no;
+        operation       volIntegrate;
+
+        fields ( alpha.solid1 );
+    }
+
+    right
+    {
+        type            surfaceFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    writeTime;
+        writeFields     no;
+        regionType      patch;
+        name            right;
+        operation       average;
+
+        fields ( U );
+    }
+}
+
+// ************************************************************************* //

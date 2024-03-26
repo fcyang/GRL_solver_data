@@ -1,0 +1,84 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      inputParameters;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//- Solid phase molar mass ()
+Mv                  233.43;
+
+//- Constant for saturation index
+pKsp                9.98;
+
+//- Volume/mole
+Vmol                52.11e-6;
+
+//- Kinetic reaction constant for precipitation
+reactionModel       constant;
+K                   4.0e-7;
+
+//- Activation concentration for precipitation
+Cactivate           0.01;
+
+//- Ion diffusion coefficient
+diffInLiquid        1.4e-9;
+
+//- Parameters to constrain diffusive surface thickness
+alphaSolidMin       0.95;
+gradientLimit       1e20;
+
+//- Penalty constant for solid phase in fluid flow
+Cu                  1e20;
+
+//- Options for different solver functions
+// uniform surface growth enable/disable
+smoothSurface       false;
+smoothAreaDensity   20.0;
+
+// directional growth enable/disable
+dirGrowth           false;
+// total number of directional growth
+dirGrowthNum        5;
+// defined vectors of directional growth
+dirGrowthNorm       ((1.0 0 0) (0 1.0 0) (0 0 1.0) (0.447 0.894 0) (0.447 -0.894 0));
+// prescribled growth rate constant for each direction
+KList               (1.394e-6 9.3612e-06 2.784e-06 4.1847e-06 4.1847e-06);
+// prefactor for better surface norm capture
+dirFactor           (0.6 1 1 1 1);
+
+// nucleation enable/disable
+nucleation          true;
+// nucleation within a box enable/disable
+nucleationBox       true;
+// nucleation box min/max limits
+nucMinPoint         (4e-6 -1e-3 -1e-3);
+nucMaxPoint         (1e-3 1e-3 1e-3);
+// initial nucleation solid vof
+nucleationVof       5e-6;
+// Cutoff of nucleation in a cell for liquid vof
+nucleationVofCut    0.5;
+// lnA prefactor for nucleation
+lnA                 20.19;
+// Geometric factor for nucleation
+B                   16.76;
+// interfacial energy for nucleation
+gamma               32.67e-3;
+
+// correction for diffusion coefficient enable/disable
+ionEffect           false;
+ionEffectA          0.02984;
+ionEffectB          0.0096;
+
+// debug enable/disable
+debug               false;
+
+// ************************************************************************* //

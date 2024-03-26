@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      solid1Inputs;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//- Phase name
+phaseName           solid1;
+
+//- Solid phase molar mass ()
+Mv                  233.43;
+
+//- Constant for saturation index
+pKsp                9.98;
+
+//- Volume/mole
+Vmol                52.11e-6;
+
+//- Kinetic reaction constant for precipitation
+surfaceReaction     true;
+//- !!!Newly added option for phase change reaction "precipitation" or "dissolution"
+precOrDiss			precipitation;
+reacModel           linear;
+K                   5.0e-5;
+
+//- Activation concentration for precipitation
+Csat                0.01;
+
+//- !!!Newly added parameter to constrain concentration
+//- Initial concentration of bulk solution
+Cinit				0.1758;
+
+//- Ion diffusion coefficient
+diffInLiquid        1.0e-8;
+
+//- Parameters to constrain diffusive surface thickness
+alphaSolidMin       0.95;
+gradientLimit       1e20;
+
+//- Penalty constant for solid phase in fluid flow
+Cu                  1e20;
+
+//- Options for different solver functions
+//- Surface area density model option
+areaDensityModel    gradient;
+areaDensityFactor   1.0;
+areaDensityExp      1.0;
+
+//- Options for nucleation
+nucleation          true;
+//- Nucleation parameters
+nucleationModel     wall;
+// nucleation box min/max limits
+nucMinPoint         (-1e-3 -1e-3 -1e-3);
+nucMaxPoint         (1e-3 1e-3 1e-3);
+nucleationVof       0.01;
+lnA                 16.118;
+B                   16.76;
+gamma               32.9e-3;
+
+// debug enable/disable
+debug               false;
+
+// ************************************************************************* //
